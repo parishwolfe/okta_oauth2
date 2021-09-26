@@ -21,4 +21,4 @@ simple oauth2 implementation with okta
 8. user's profile info is displayed.
 
 ![screenshot](./screenshots/oauth_auth_code_flow.png)
-![screenshot](screenshots/profile_endpoint.png)
+![screenshot](screenshots/profile.png)

@@ -43,9 +43,9 @@ def callback():
     """Receive callback, validate code, redirect to /profile"""
     code = request.args.get("code")
     if not code:
-        return "Missing code"
+        return "Missing code", 400
     if int(request.args.get("state")) != int(session.get("state")):
-        return "State Mismatch"
+        return "State Mismatch", 401
     params = {
         "client_id": secret.client_id,
         "client_secret": secret.client_secret
@@ -72,7 +72,7 @@ def callback():
 def userinfo():
     """Retreive user details from /userinfo endpoint"""
     if not session.get("access_token"):
-        return "Missing access token"
+        return "Missing access token", 400
     headers = {
         "Accept": "application/json",
         "Authorization": "Bearer " + session["access_token"]
